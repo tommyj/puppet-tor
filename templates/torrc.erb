@@ -38,6 +38,11 @@ MyFamily <%= myfamily %>
 ExitPolicy <%= exitpolicyarray %>
 <% end -%>
 NumCpus <%= @numcpus %>
+<% @hidden_services.each do |service| -%>
+HiddenServiceDir /var/lib/tor/<%= service['name'] %>
+<%   service['ports'].each do |port| -%>
+HiddenServicePort <%= port['port'] %> <%= port['target'] %>
+<% end -%>
 <% @dnsport.each do |dnsportarray| -%>
 DNSPort <%= dnsportarray %>
 <% end -%>

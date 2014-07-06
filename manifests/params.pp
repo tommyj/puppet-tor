@@ -91,6 +91,11 @@ class tor::params {
     default => $::tor_automaphosts,
   }
 
+  $hidden_services = $::tor_hidden_services ? {
+    undef   => [],
+    default => $::tor_hidden_services,
+  }
+
   # If it's undef, that's fine
   $address = $::tor_address
   $outboundbindaddress = $::tor_outboundbindaddress

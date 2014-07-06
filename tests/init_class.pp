@@ -12,6 +12,7 @@ class { 'tor':
   contactinfo         => 'Random Person <nobody AT example dot com>',
   dirport             => [ '80 NoListen', '10.2.3.4:9091 NoAdvertise' ],
   exitpolicy          => [ 'reject *:*' ],
+  hidden_services     => [ ],
   dnsport             => [ '53', '5353 IsolateClientAddr' ],
   transport           => [ '7001', '7002 IsolateDestAddr' ],
   virtualaddrnetwork  => [ '100.64.0.0/10' ],
