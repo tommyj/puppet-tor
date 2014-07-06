@@ -38,3 +38,20 @@ MyFamily <%= myfamily %>
 ExitPolicy <%= exitpolicyarray %>
 <% end -%>
 NumCpus <%= @numcpus %>
+<% @dnsport.each do |dnsportarray| -%>
+DNSPort <%= dnsportarray %>
+<% end -%>
+<% @transport.each do |transportarray| -%>
+TransPort <%= transportarray %>
+<% end -%>
+<% if @virtualaddrnetwork -%>
+VirtualAddrNetworkIPv4 <%= virtualaddrnetwork %>
+<% end -%>
+<% if @virtualaddrnetwork6 -%>
+VirtualAddrNetworkIPv6 <%= virtualaddrnetwork6 %>
+<% end -%>
+<% if @automaphosts -%>
+AutomapHostsOnResolve 1
+<% else -%>
+AutomapHostsOnResolve 0
+<% end -%>
