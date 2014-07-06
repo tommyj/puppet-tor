@@ -66,6 +66,31 @@ class tor::params {
     default => $::tor_exitpolicy,
   }
 
+  $dnsport = $::tor_dnsport ? {
+    undef   => [],
+    default => $::tor_dnsport,
+  }
+
+  $transport = $::tor_transport ? {
+    undef   => [],
+    default => $::tor_transport,
+  }
+
+  $virtualaddrnetwork = $::tor_virtualaddrnetwork ? {
+    undef   => '127.192.0.0/10',
+    default => $::tor_virtualaddrnetwork,
+  }
+
+  $virtualaddrnetwork6 = $::tor_virtualaddrnetwork6 ? {
+    undef   => '[fe80::]/10',
+    default => $::tor_virtualaddrnetwork6,
+  }
+
+  $automaphosts = $::tor_automaphosts ? {
+    undef   => false,
+    default => $::tor_automaphosts,
+  }
+
   # If it's undef, that's fine
   $address = $::tor_address
   $outboundbindaddress = $::tor_outboundbindaddress

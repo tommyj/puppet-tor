@@ -74,6 +74,45 @@
 #            reject *:563,reject *:1214,reject *:4661-4666,reject *:6346-6429,
 #            reject *:6699,reject *:6881-6999,accept *:*
 #
+# [*dnsport*]
+#   If non-zero, open this port to listen for UDP DNS requests, and
+#   resolve them anonymously.
+#   Default: none
+#
+# [*transport*]
+#   Open this port to listen for transparent proxy connections. This
+#   directive can be specified multiple times to bind to multiple
+#   addresses/ports. If you’re planning to use Tor as a transparent
+#   proxy for a network, you’ll want to examine and change
+#   VirtualAddrNetwork from the default setting.
+#   Default: none
+#
+# [*virtualaddrnetwork*]
+#   When Tor needs to assign a virtual (unused) address because of a
+#   MAPADDRESS command from the controller or the AutomapHostsOnResolve
+#   feature, Tor picks an unassigned address from this range.
+#   When providing proxy server service to a network of computers using
+#   a tool like dns-proxy-tor, change the IPv4 network to
+#   "10.192.0.0/10" or "172.16.0.0/12". The default VirtualAddrNetwork
+#   address ranges on a properly configured machine will route to the
+#   loopback or link-local interface. For local use, no change to the
+#   default VirtualAddrNetwork setting is needed.
+#   Default: 127.192.0.0/10
+#
+# [*virtualaddrnetwork6*]
+#   When providing proxy server service to a network of computers using
+#   a tool like dns-proxy-tor, change the IPv6 network to
+#   "[fe80::]/10".
+#   Default: [fe80::]/10
+#
+# [*automaphosts*]
+#   When this option is enabled, and we get a request to resolve an
+#   address that ends with one of the suffixes in AutomapHostsSuffixes,
+#   we map an unused virtual address to that address, and return the
+#   new virtual address. This is handy for making ".onion" addresses
+#   work with applications that resolve an address and then connect to it.
+#   Default: false (0)
+#
 # [*yum_server*]
 #   The URL for the YUM server host.
 #   Default: http://deb.torproject.org
@@ -184,6 +223,11 @@ class tor (
   $contactinfo         = $tor::params::contactinfo,
   $dirport             = $tor::params::dirport,
   $exitpolicy          = $tor::params::exitpolicy,
+  $dnsport             = $tor::params::dnsport,
+  $transport           = $tor::params::transport,
+  $virtualaddrnetwork  = $tor::params::virtualaddrnetwork,
+  $virtualaddrnetwork6 = $tor::params::virtualaddrnetwork6,
+  $automaphosts        = $tor::params::automaphosts,
 
   $yum_server          = $tor::params::yum_server,
   $yum_path            = $tor::params::yum_path,
