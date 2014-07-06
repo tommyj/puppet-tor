@@ -113,6 +113,10 @@
 #   work with applications that resolve an address and then connect to it.
 #   Default: false (0)
 #
+# [*hidden_services*]
+#   Define hidden services.
+#   Default: empty
+#
 # [*yum_server*]
 #   The URL for the YUM server host.
 #   Default: http://deb.torproject.org
@@ -228,6 +232,8 @@ class tor (
   $virtualaddrnetwork  = $tor::params::virtualaddrnetwork,
   $virtualaddrnetwork6 = $tor::params::virtualaddrnetwork6,
   $automaphosts        = $tor::params::automaphosts,
+
+  $hidden_services     = $tor::params::hidden_services,
 
   $yum_server          = $tor::params::yum_server,
   $yum_path            = $tor::params::yum_path,
