@@ -42,6 +42,7 @@ NumCpus <%= @numcpus %>
 HiddenServiceDir /var/lib/tor/<%= service['name'] %>
 <%   service['ports'].each do |port| -%>
 HiddenServicePort <%= port['port'] %> <%= port['target'] %>
+<%   end -%>
 <% end -%>
 <% @dnsport.each do |dnsportarray| -%>
 DNSPort <%= dnsportarray %>
@@ -50,10 +51,10 @@ DNSPort <%= dnsportarray %>
 TransPort <%= transportarray %>
 <% end -%>
 <% if @virtualaddrnetwork -%>
-VirtualAddrNetworkIPv4 <%= virtualaddrnetwork %>
+VirtualAddrNetworkIPv4 <%= @virtualaddrnetwork %>
 <% end -%>
 <% if @virtualaddrnetwork6 -%>
-VirtualAddrNetworkIPv6 <%= virtualaddrnetwork6 %>
+VirtualAddrNetworkIPv6 <%= @virtualaddrnetwork6 %>
 <% end -%>
 <% if @automaphosts -%>
 AutomapHostsOnResolve 1
